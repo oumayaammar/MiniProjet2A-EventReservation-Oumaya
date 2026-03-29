@@ -11,12 +11,14 @@ class AdminSecurityController extends AbstractController
     #[Route('/admin/login', name: 'admin_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
+        // Rediriger si déjà connecté comme admin
+        if ($this->getUser()) {
+            return $this->redirectToRoute('admin_dashboard');
+        }
 
         return $this->render('admin/login.html.twig', [
-            'last_username' => $lastUsername,
-            'error'         => $error,
+            'last_username' => $authenticationUtils->getLastUsername(),
+            'error'         => $authenticationUtils->getLastAuthenticationError(),
         ]);
     }
 

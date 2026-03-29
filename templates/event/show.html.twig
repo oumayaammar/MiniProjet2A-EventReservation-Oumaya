@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ event.title }}{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-md-7">
+        {% if event.image %}
+            <img src="{{ event.image }}" class="img-fluid rounded mb-3">
+        {% endif %}
+        <h1>{{ event.title }}</h1>
+        <p>📍 {{ event.location }} | 📅 {{ event.date|date('d/m/Y H:i') }}</p>
+        <p>🪑 {{ event.seats }} places disponibles</p>
+        <p>{{ event.description }}</p>
+    </div>
+    <div class="col-md-5">
+        <div class="card shadow p-4">
+            <h4>📝 Réserver une place</h4>
+            {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.phone) }}
+                {{ form_row(form.submit) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card shadow p-4">
+            <h2>{{ title }}</h2>
+            {{ form_start(form) }}
+                {{ form_row(form.title) }}
+                {{ form_row(form.description) }}
+                {{ form_row(form.date) }}
+                {{ form_row(form.location) }}
+                {{ form_row(form.seats) }}
+                {{ form_row(form.image) }}
+                {{ form_row(form.submit) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}
