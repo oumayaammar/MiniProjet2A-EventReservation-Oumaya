@@ -99,12 +99,12 @@ class Event
         return $this;
     }
 
-    public function getSeats(): ?Number
+    public function getSeats(): ?int 
     {
         return $this->seats;
     }
 
-    public function setSeats(?Number $seats): static
+    public function setSeats(?int $seats): static
     {
         $this->seats = $seats;
 
